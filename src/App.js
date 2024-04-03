@@ -33,10 +33,15 @@ function App() {
       price: 200,
       location: "Mumbai",
     },];
+
+    const liftingdatafromNewExpense = (event) => {
+      const showData = {...event, id: Math.random().toString()};
+      console.log(showData);
+    }
   return (
     <>
       <div>
-        <NewExpense />
+        <NewExpense onAddNewExpenseData = {liftingdatafromNewExpense}/>
         {expenses.map((expense) => {
           return (
             <ExpenseItem
