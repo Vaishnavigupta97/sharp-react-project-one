@@ -29,6 +29,9 @@ function ExpenseForm(props) {
         setEnteredDate("");
         props.onaddDataByExpenseForm(expenseData);
     }
+    const cancelButtonClickHaandler = () => {
+        props.onCancel();
+    }
     return (
         <>
             <form onSubmit={formSubmitHandler}>
@@ -45,6 +48,7 @@ function ExpenseForm(props) {
                     <label>Date</label>
                     <input type="date" value={enteredDate} min= "2023-1-1" max= "2024-12-31" onChange={dateChangeHandler} required />
                     </div>
+                    <button type="button" onClick={cancelButtonClickHaandler}>Cancel</button>
                     <button type="submit">Add Expense</button>
                 </div>
             </form>
