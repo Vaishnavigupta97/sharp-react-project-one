@@ -5,6 +5,9 @@ import { useState } from "react";
 
 function ExpenseItem(props){  
   // let price = props.price;
+  const changeTitle = () => {
+    console.log("change Title");
+  }
   let [price, setPrice] = useState(props.price);
   return (
     <div className="expense-item">
@@ -14,6 +17,7 @@ function ExpenseItem(props){
         <div className="expense-item__price">${price}</div>
         <button onClick={() => setPrice(0)}>Delete Expense</button>
       </div>
+      <button onClick={changeTitle}>Change Title</button>
     </div>
   );
 }
