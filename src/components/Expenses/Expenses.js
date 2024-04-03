@@ -11,23 +11,47 @@ const Expenses = (props) => {
     const filteredExpenses = props.expenses.filter((expense) => {
         return expense.date.getFullYear().toString() === filteredYear;
     })
-    return(
+    let expenseContent = <p>No Expenses Found</p>;
+    if(filteredExpenses.length > 0){
+        expenseContent = filteredExpenses.map((expense) => {
+            return (
+                <>
+                    <ExpenseItem
+                        key={expense.id}
+                        date={expense.date}
+                        title={expense.title}
+                        price={expense.price}
+                        location={expense.location}
+                        />
+                        {filteredExpenses.length === 1 && <p>Only one expense here. Please add more</p>}
+                </>
+
+            )
+        })
+    }
+    
+
+    return (
         <>
-        <div className="expenses">
-            <ExpensesFilter selected = {filteredYear} onChangeFilter={changeFilterHandler} />
-        {filteredExpenses.map((expense) => {
-          return (
-            <ExpenseItem
-              key={expense.id}
-              date={expense.date}
-              title={expense.title}
-              price={expense.price}
-              location={expense.location}
-            />
-          )
-        })}   
-        </div>
-     </>
+            <div className="expenses">
+                <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler} />
+                {expenseContent}
+                {/* {filteredExpenses.length > 1 &&
+                    filteredExpenses.map((expense) => {
+                        return (
+                            <>
+                                <ExpenseItem
+                                    key={expense.id}
+                                    date={expense.date}
+                                    title={expense.title}
+                                    price={expense.price}
+                                    location={expense.location}
+                                />
+                            </>
+                        )
+                    })} */}
+            </div>
+        </>
     )
 }
 export default Expenses;
