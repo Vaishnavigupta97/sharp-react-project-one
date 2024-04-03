@@ -3,11 +3,6 @@ import "./ExpenseForm.css";
 
 
 function ExpenseForm(props) {
-    // const [userInput, setUserInput] = useState({
-    //     enteredTitle : " ",
-    //     enteredAmount : " ",
-    //     enteredDate : " "
-    // });
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnteredDate] = useState("");
@@ -26,7 +21,7 @@ function ExpenseForm(props) {
         event.preventDefault();
         const expenseData = {
             title : enteredTitle,
-            amount : enteredAmount,
+            price : enteredAmount,
             date : new Date (enteredDate),
         }
         setEnteredTitle("");
